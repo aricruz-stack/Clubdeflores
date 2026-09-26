@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Club de Flores — Mi membresía</title>
+<link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="vista-login" class="pantalla-centrada">
+  <div class="tarjeta-login">
+    <img src="/img/logo.png" alt="Logo" class="logo">
+    <h1>Club de Flores</h1>
+    <p class="subtitulo">Ingresá con tu código de socio y tu DNI</p>
+    <form id="form-login">
+      <label for="codigo">Código de socio</label>
+      <input id="codigo" type="text" autocomplete="off" required>
+      <label for="dni">DNI</label>
+      <input id="dni" type="text" autocomplete="off" required>
+      <button type="submit" class="boton-principal">Ingresar</button>
+      <p class="error-msg" id="login-error"></p>
+    </form>
+  </div>
+</div>
+
+<!-- CARNET -->
+<div id="vista-carnet" class="pagina-carnet oculto">
+  <div class="barra-superior">
+    <button class="boton-secundario boton-chico" id="btn-salir">Salir</button>
+  </div>
+
+  <div class="encabezado-carnet">
+    <h1 class="serif" style="font-size:1.6rem">Mi carnet</h1>
+  </div>
+
+  <div class="carnet">
+    <img src="/img/logo.png" alt="Club de Flores" class="carnet-sello">
+    <button type="button" class="carnet-avatar" id="c-avatar" title="Tocar para cambiar la foto">--</button>
+    <input type="file" id="input-foto" accept="image/*" class="oculto">
+    <div class="acciones-foto">
+      <button type="button" class="link-chico" id="btn-quitar-foto">Quitar foto</button>
+    </div>
+    <div class="carnet-filas">
+      <div class="carnet-fila">
+        <span class="fila-label">Código</span>
+        <span class="fila-valor" id="c-codigo">—</span>
+      </div>
+      <div class="carnet-fila">
+        <span class="fila-label">Socio</span>
+        <span class="fila-valor" id="c-nombre">—</span>
+      </div>
+      <div class="carnet-fila">
+        <span class="fila-label">Plan</span>
+        <div class="fila-valor" id="c-membresia">—</div>
+      </div>
+      <div class="carnet-fila">
+        <span class="fila-label">Cuota</span>
+        <div class="fila-valor" id="c-estado">—</div>
+      </div>
+      <div class="carnet-fila">
+        <span class="fila-label">Entrega</span>
+        <span class="fila-valor" id="c-entrega">Sin coordinar</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="seccion-entrega">
+    <h2>Coordinar entrega</h2>
+    <p>Elegí una de las fechas disponibles para tu membresía.</p>
+    <div class="lista-fechas" id="lista-fechas">
+      <div class="vacio">Cargando fechas disponibles…</div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/socio.js"></script>
+</body>
+</html>

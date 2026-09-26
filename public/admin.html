@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel de administración — Club de Flores</title>
+<link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- LOGIN ADMIN -->
+<div id="vista-login" class="pantalla-centrada">
+  <div class="tarjeta-login">
+    <img src="/img/logo.png" alt="Logo" class="logo">
+    <h1>Panel de administración</h1>
+    <p class="subtitulo">Acceso solo para el equipo de la florería</p>
+    <form id="form-login">
+      <label for="usuario">Usuario</label>
+      <input id="usuario" type="text" autocomplete="username" required>
+      <label for="password">Contraseña</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <button type="submit" class="boton-principal">Ingresar</button>
+      <p class="error-msg" id="login-error"></p>
+    </form>
+  </div>
+</div>
+
+<!-- PANEL -->
+<div id="vista-panel" class="layout-admin oculto">
+  <aside class="admin-sidebar">
+    <div class="logo-row">
+      <img src="/img/logo.png" alt="Logo">
+      <span>Club de Flores</span>
+    </div>
+    <div class="nav-item activo" data-tab="membresias">Membresías</div>
+    <div class="nav-item" data-tab="fechas">Fechas de entrega</div>
+    <div class="nav-item" data-tab="socios">Socios</div>
+    <div style="flex:1"></div>
+    <button class="boton-secundario boton-chico" id="btn-salir">Cerrar sesión</button>
+  </aside>
+
+  <main class="admin-main">
+
+    <!-- MEMBRESIAS -->
+    <section id="tab-membresias">
+      <div class="admin-header"><h2>Membresías</h2></div>
+      <div class="panel">
+        <h3>Nueva membresía</h3>
+        <form id="form-membresia" class="form-linea">
+          <div>
+            <label for="m-nombre">Nombre</label>
+            <input id="m-nombre" required placeholder="Ej: Ramo semanal chico">
+          </div>
+          <div>
+            <label for="m-tipo">Frecuencia de entrega</label>
+            <select id="m-tipo">
+              <option value="semanal">Semanal</option>
+              <option value="quincenal">Quincenal</option>
+              <option value="mensual">Mensual</option>
+            </select>
+          </div>
+          <div>
+            <label for="m-precio">Valor mensual ($)</label>
+            <input id="m-precio" type="number" min="0" step="1" required placeholder="Ej: 15000">
+          </div>
+          <button type="submit" class="boton-principal" style="margin-top:0">Crear</button>
+        </form>
+      </div>
+      <div class="panel">
+        <h3>Membresías cargadas</h3>
+        <table>
+          <thead><tr><th>Nombre</th><th>Frecuencia de entrega</th><th>Valor mensual</th><th>Activa</th><th></th></tr></thead>
+          <tbody id="tabla-membresias"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FECHAS -->
+    <section id="tab-fechas" class="oculto">
+      <div class="admin-header"><h2>Fechas de entrega</h2></div>
+      <div class="panel">
+        <h3>Cargar fecha</h3>
+        <form id="form-fecha" class="form-linea">
+          <div>
+            <label for="f-membresia">Membresía</label>
+            <select id="f-membresia"></select>
+          </div>
+          <div>
+            <label for="f-fecha">Fecha</label>
+            <input id="f-fecha" type="date" required>
+          </div>
+          <div>
+            <label for="f-cupo">Cupo máximo (opcional)</label>
+            <input id="f-cupo" type="number" min="1" placeholder="Sin límite">
+          </div>
+          <button type="submit" class="boton-principal" style="margin-top:0">Agregar</button>
+        </form>
+      </div>
+      <div class="panel">
+        <h3>Fechas cargadas</h3>
+        <table>
+          <thead><tr><th>Fecha</th><th>Membresía</th><th>Cupo</th><th></th></tr></thead>
+          <tbody id="tabla-fechas"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SOCIOS -->
+    <section id="tab-socios" class="oculto">
+      <div class="admin-header"><h2>Socios</h2></div>
+      <div class="panel">
+        <h3>Nuevo socio</h3>
+        <form id="form-socio" class="form-linea">
+          <div>
+            <label for="s-codigo">Código de socio</label>
+            <input id="s-codigo" required>
+          </div>
+          <div>
+            <label for="s-dni">DNI</label>
+            <input id="s-dni" required>
+          </div>
+          <div>
+            <label for="s-nombre">Nombre</label>
+            <input id="s-nombre" required>
+          </div>
+          <div>
+            <label for="s-apellido">Apellido</label>
+            <input id="s-apellido" required>
+          </div>
+          <div>
+            <label for="s-membresia">Membresía</label>
+            <select id="s-membresia"></select>
+          </div>
+          <div>
+            <label for="s-vencimiento">Cuota vence el (opcional)</label>
+            <input id="s-vencimiento" type="date">
+          </div>
+          <button type="submit" class="boton-principal" style="margin-top:0">Dar de alta</button>
+        </form>
+      </div>
+      <div class="panel">
+        <h3>Listado de socios</h3>
+        <table>
+          <thead><tr><th></th><th>Código</th><th>Nombre</th><th>Membresía</th><th>Cuota</th><th>Próxima entrega</th><th></th></tr></thead>
+          <tbody id="tabla-socios"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>
